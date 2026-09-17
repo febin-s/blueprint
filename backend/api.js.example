@@ -1,0 +1,26 @@
+const API = "https://YOUR-BACKEND-URL.com";
+
+async function loadPropertiesFromAPI() {
+    const response = await fetch(`${API}/api/properties`);
+    return await response.json();
+}
+
+async function registerPropertyToAPI(data) {
+    const response = await fetch(`${API}/api/properties`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    return await response.json();
+}
+
+async function searchPropertiesAPI(query) {
+    const response = await fetch(
+        `${API}/api/properties/search?q=${encodeURIComponent(query)}`
+    );
+
+    return await response.json();
+}
